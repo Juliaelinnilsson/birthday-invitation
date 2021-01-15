@@ -1,14 +1,16 @@
 <template>
  <div> 
-  
+    <Rsvp />
  </div>
 </template>
 
 <script>
 /* eslint-disable */
-
+import Rsvp from '../components/Rsvp'
 export default {
-  name: 'Home',
- 
+  name: 'About',
+  components: {
+    Rsvp
+  }
 }
 </script>
