@@ -5,11 +5,31 @@ const bodyParser = require('body-parser');
 const dotenv = require('dotenv/config');
 const cors = require('cors');
 
-//Import routes
-const postRoute = require('./routes/posts');
-const auth = require('./routes/auth');
+// Middleware
+app.use(bodyParser.json());
+app.use(express.json());
+app.use(cors());
 
-//Connect to DB
+// Routes 
+app.get('/', (req,res) => {
+  res.send('we are on home');
+});
+
+// Import routes
+const admin = require('./routes/admin');
+const auth = require('./routes/auth');
+const rsvpRoute = require('./routes/rsvp');
+const photoRoute = require('./routes/photo');
+const commentRoute = require('./routes/comments');
+
+// Route middlewares
+app.use('/admin', admin);
+app.use('/user', auth);
+app.use('/rsvp', rsvpRoute);
+app.use('/photos', photoRoute);
+app.use('/comments', commentRoute);
+ 
+// Connect to DB
 mongoose.connect(
   process.env.databaseURL,
   {useNewUrlParser: true,
@@ -17,14 +37,5 @@ mongoose.connect(
   () => console.log('connected')
 );
 
-//Middleware
-app.use(bodyParser.json());
-app.use(express.json());
-app.use(cors());
-
-//Route middlewares
-app.use('/posts', postRoute);
-app.use('/user', auth);
-
-//Listen to server
+// Listen to server
 app.listen(3000);
