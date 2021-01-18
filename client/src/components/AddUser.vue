@@ -1,5 +1,5 @@
 <template>
- <div> 
+  <div> 
     <form @submit.prevent="addToAPI">   
       <input type="text" placeholder="First Name" v-model="User.firstname">
       <input type="text" placeholder="Last Name" v-model="User.lastname">
@@ -9,7 +9,7 @@
         <button type="submit" class="btn-big">Submit</button>
       </div>
     </form>
- </div>
+  </div>
 </template>
 
 <script>

@@ -11,7 +11,6 @@
     <div class="row main-wrapper">
       <router-view/>
     </div>
-   
   </div>
 </template>
 
@@ -20,8 +19,13 @@
   #nav {
     justify-content: end;
   }
+
   a {
     color: $text-color;
+
+    &:hover {
+      color: darken($text-color, 5%);
+    }
   }
 
   body {
@@ -77,6 +81,7 @@
     font-weight: bold;
     font-family: $heading-font;
   }
+
   h2 {
     font-size: 40px;
     text-transform: uppercase;

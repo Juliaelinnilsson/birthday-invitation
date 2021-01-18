@@ -50,7 +50,7 @@ export default {
   mounted() {
     axios.get('http://localhost:3000/rsvp/')
     .then(res => this.info = res.data)
-      .catch(err => console.log(err));
+    .catch(err => console.log(err));
   },
 }
 </script>
