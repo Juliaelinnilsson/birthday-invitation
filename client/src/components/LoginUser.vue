@@ -26,14 +26,18 @@ export default {
         email: this.User.email,
         password: this.User.password
       }
-      console.log(loginUser);
+      
       axios.post('http://localhost:3000/user/login', loginUser)
-        .then((response) => {
-          this.$router.push("/rsvp");
+        .then(res => {
+          // if successfull
+          if (res.status === 200) {
+            localStorage.setItem('token', res.data.token);
+            this.$router.push('/');
+          }
+        }, err => {
+          console.log(err.response);
+          this.error = err.response.data.error
         })
-        .catch((error) => {
-         this.errormsg = error.response.data
-        }); 
     }
   }
 }

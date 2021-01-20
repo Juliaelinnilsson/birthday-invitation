@@ -14,7 +14,7 @@
         <td>{{ i.lastname }}</td>
         <td>{{ i.allergy }}</td>
         <td>{{ i.other }}</td>
-        <td><button @click="deleteGuest(info._id)"></button></td>
+        <td><button @click="deleteGuest(i._id)"></button></td>
       </tr>
     </table>
   </div>

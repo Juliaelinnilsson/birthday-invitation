@@ -11,6 +11,11 @@ export default {
   name: 'About',
   components: {
     Rsvp
+  },  created() {
+    //user is not authorized
+    if (localStorage.getItem('token') === null) {
+      this.$router.push('/login');
+    } 
   }
 }
 </script>

@@ -7,12 +7,24 @@
       <router-link to="/login">Login</router-link> |
       <router-link to="/photos">Photos</router-link> |
       <router-link to="/comments">Hang out</router-link>
+      <button @click="logout">logout</button>
     </div>
     <div class="row main-wrapper">
       <router-view/>
     </div>
   </div>
 </template>
+
+<script>
+export default {
+ methods: {
+    logout() {
+      localStorage.clear();
+      this.$router.push('/login');
+    }
+  }
+}
+</script>
 
 <style lang="scss">
 
