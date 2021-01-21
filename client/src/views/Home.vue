@@ -29,7 +29,8 @@ export default {
   }
 
   img {
-    width: 300px;
+    padding-top: 30px;
+    width: 200px;
     height: auto;
   }
 

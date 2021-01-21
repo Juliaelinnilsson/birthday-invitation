@@ -1,37 +1,98 @@
 <template>
   <div id="app">
-     <div id="row nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/rsvp">RSVP</router-link> |
-      <router-link to="/signup">Sign up</router-link> |
-      <router-link to="/login">Login</router-link> |
-      <router-link to="/photos">Photos</router-link> |
-      <router-link to="/comments">Hang out</router-link>
-      <button @click="logout">logout</button>
+    <div class="nav">
+      <router-link to="/">
+        <div class="icon-wrapper">
+          <img class="icon" src="./assets/icons/home.svg" alt="">
+        </div>
+      </router-link>
+      <div class="icon-wrapper">
+        <router-link to="/user">
+          <img class="icon" src="./assets/icons/dance.svg" alt="">
+        </router-link>
+      </div>
+      <div class="icon-wrapper">
+        <router-link to="/photos">
+          <img class="icon" src="./assets/icons/picture.svg" alt="">
+        </router-link>
+      </div>
+      <div class="icon-wrapper">
+        <router-link to="/comments">
+          <img class="icon" src="./assets/icons/chat.svg" alt="">
+        </router-link>
+      </div>
     </div>
-    <div class="row main-wrapper">
+    <div class="main-wrapper">
       <router-view/>
     </div>
   </div>
 </template>
 
 <script>
-export default {
- methods: {
-    logout() {
-      localStorage.clear();
-      this.$router.push('/login');
-    }
-  }
-}
+
 </script>
 
 <style lang="scss">
-
-  #nav {
-    justify-content: end;
+  * {
+    margin: 0;
+    padding: 0;
   }
 
+  body {
+    background: linear-gradient(62deg, #fc8ec2 0%, #E0C3FC 100%);
+    color: $text-color;
+    padding-top: 50px;
+    padding-bottom: 100px;
+    font-family: $text-font;
+    height: 100vh;
+
+    @include for-size(tablet) {    
+      padding-left: 50px;
+      padding-right: 50px;
+    }
+
+    @include for-size(desktop) {    
+      padding-left: 250px;
+      padding-right: 250px;
+    }
+  }
+
+  .nav {
+    position: fixed;
+    bottom: 0;
+    background-color: #fc8ec2;
+    width: 100%;
+    padding: 10px 5px 0 5px;
+
+    @include for-size(tablet) {    
+      position:inherit;
+      background-color: transparent;
+    }
+
+    @include for-size(desktop) {    
+      position:inherit;
+      background-color: transparent;
+    }
+
+    .icon-wrapper {
+      width: 25%;
+      display: inline-block;
+      text-align: center;
+
+      .icon {
+        height: 30px;
+
+        @include for-size(tablet) {    
+          height: 40px;
+        }
+
+        @include for-size(desktop) {    
+          height: 50px;
+        }
+      }
+    }
+  }
+  
   a {
     color: $text-color;
 
@@ -40,17 +101,8 @@ export default {
     }
   }
 
-  body {
-    background-color: #fc8ec2;
-    background-image: linear-gradient(62deg, #fc8ec2 0%, #E0C3FC 100%);
-    color: $text-color;
-    padding-left: 20px;
-    padding-right: 20px;
-    font-family: $text-font;
-  }
-
   .main-wrapper {
-    padding-top: 40px;
+    padding: 40px 20px 0 20px;
   }
 
   label {
@@ -68,6 +120,7 @@ export default {
     margin-bottom: 5px;
     height: 25px;
     padding-left: 5px;
+    color: $text-color;
   }
 
   button {
@@ -80,6 +133,14 @@ export default {
 
     &.btn-small {
       width: 50%;
+
+      @include for-size(tablet) {    
+        width: 20%;
+      }
+      @include for-size(desktop) {    
+        width: 10%;
+      }
+
     }
 
     &.btn-big {
@@ -88,12 +149,18 @@ export default {
   }
 
   h1 {
-    font-size: 100px;
+    font-size: 60px;
     text-transform: uppercase;
     font-weight: bold;
     font-family: $heading-font;
-  }
 
+    @include for-size(tablet) {    
+      font-size: 70px;
+    }
+    @include for-size(desktop) {    
+      font-size: 100px;
+    }
+  }
   h2 {
     font-size: 40px;
     text-transform: uppercase;

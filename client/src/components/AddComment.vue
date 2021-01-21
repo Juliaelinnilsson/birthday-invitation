@@ -33,6 +33,7 @@ export default {
   input {
     height: 50px;
     margin-bottom: 0;
+    width: 98%;
   }
 
   button {

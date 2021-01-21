@@ -1,13 +1,17 @@
 <template>
   <div>
+    <h2>Say cheese!</h2>
     <form @submit.prevent="onUpload">
-      <input style="display: none" type="file" @change="onFileSelected" ref="fileInput">
-      <button class="btn-small" @click="$refs.fileInput.click()">Pick File</button>
-      <button type="submit" class="btn-small">upload</button>
+      <div class="file-upload">
+        <input style="display: none" type="file" @change="onFileSelected" ref="fileInput">
+        
+        <button class="btn-big" @click="$refs.fileInput.click()">Pick File</button>
+        <button type="submit" class="btn-big">upload</button>
+      </div>
+      
     </form>
-    <div>
-      <h2>hej</h2>
-      <div v-bind:files="files" v-bind:key="file.id" v-for="file in files">
+    <div class="image-container">
+      <div class="image-wrapper" v-bind:files="files" v-bind:key="file.id" v-for="file in files">
         <img v-bind:src="path + file.filename" /> 
       </div>
     </div>
@@ -31,7 +35,7 @@
       },
       onUpload() {
         const fd = new FormData();
-        fd.append('file', this.selectedFile, this.selectedFile.name)
+        fd.append('file', this.selectedFile)
         axios.post('http://localhost:3000/upload', fd)
         .then(res => {
           console.log(res)
@@ -48,7 +52,54 @@
 </script>
 
 <style lang="scss">
-  img {
-    width: 100px;
+  h2 {
+    text-align: center;
+    padding-bottom: 20px;
+    
   }
+
+  .file-upload {
+    text-align: center;
+
+    button {
+      width: 50%;
+      
+      @include for-size(tablet) {    
+        width: 40%;
+      }
+
+      @include for-size(desktop) {    
+        width: 20%;
+      }
+    }
+  }
+
+  .image-container {
+    padding-top: 20px;
+    width: 100%;
+
+    .image-wrapper {
+      position: relative;
+      width: 50%;
+      display: inline;
+
+      img {
+        width: 100%;
+
+        @include for-size(tablet) {    
+          width: 49%;
+          padding: 3px;
+        }
+
+        @include for-size(desktop) {    
+          width: 32%;
+          padding: 5px;
+        }
+
+      }
+    }
+
+  }
+
+  
 </style>

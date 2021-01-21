@@ -118,7 +118,6 @@ const upload = multer({ storage });
 // "file" need to be the same as the forms input name
 app.post('/upload', upload.single('file'), (req, res) => {
   // res.json({file: req.file});
-  console.log('it´s work')
 });
 
 // @route GET / files

@@ -1,5 +1,8 @@
 <template>
-  <div id="app">
+  <div>
+    <div>
+      <h2>Let's hangout</h2>
+    </div>
     <AddComment v-on:add-comment="addComment" />
     <Comments v-bind:comments="comments" v-on:del-comment="deleteComment" />
   </div>
@@ -41,10 +44,16 @@ export default {
     axios.get('http://localhost:3000/comments')
       .then(res => this.comments = res.data)
       .catch(err => console.log(err));
+       if (localStorage.getItem('token') === null) {
+        this.$router.push('/login');
+      } 
   }
 }
 </script>
 
-<style>
- 
+<style lang="scss" scoped>
+  h2 {
+    text-align: center;
+    padding-bottom: 20px;
+  }
 </style>

@@ -1,13 +1,19 @@
 <template>
-  <div> 
+  <div class="signup-wrapper"> 
     <form @submit.prevent="addToAPI">   
-      <input type="text" placeholder="First Name" v-model="User.firstname">
-      <input type="text" placeholder="Last Name" v-model="User.lastname">
-      <input type="text" placeholder="Email" v-model="User.email">
-      <input type="text" placeholder="Password" v-model="User.password">
-      <div class="button-wrapper">
+      <h1>Sign up</h1>
+      <label for="Firstnam">Firstname</label>
+      <input type="text" name="firstname" v-model="User.firstname">
+      <label for="Lastname">Lastname</label>
+      <input type="text" name="lastname" v-model="User.lastname">
+      <label for="Email">Email</label>
+      <input type="text" name="email" v-model="User.email">
+      <label for="Password">Password</label>
+      <input type="text" name="password" v-model="User.password">
+      <div>
         <button type="submit" class="btn-big">Submit</button>
       </div>
+      <img class="icon" src="../assets/icons/cocktail.svg" alt="coctail icon">
     </form>
   </div>
 </template>
@@ -45,7 +51,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .button-wrapper{
-    justify-content: center;
+    .signup-wrapper {
+    margin: auto;
+    width: 70%;
+    padding: 10px;
+    text-align: center;
+    font-size: 30px;
+   
+   .icon {
+     padding-top: 30px;
+     height: 200px;
+   }
   }
 </style>
